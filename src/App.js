@@ -1,5 +1,7 @@
 import React, {useState,useRef} from 'react';
 import './App.css';
+import SignIn from './components/auth/SignIn';
+import SignOut from './components/auth/SignOut';
 
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
@@ -27,30 +29,13 @@ function App() {
     <div className="App">
       <header>
         <h1>{user && user.displayName}⚛️🔥💬</h1>
-        <SignOut />
+        <SignOut auth={auth}/>
       </header>
       <section>
-        {user ? <ChatRoom /> : <SignIn />}
+        {user ? <ChatRoom /> : <SignIn auth={auth}/>}
       </section>
     </div>
   );
-}
-
-function SignIn(){
-  const signInWithGoogle = () => {
-    const provider = new firebase.auth.GoogleAuthProvider();
-    auth.signInWithPopup(provider);
-  }
-
-  return(
-    <button onClick={signInWithGoogle}>Sign in with Google</button>
-  )
-}
-
-function SignOut(){
-  return auth.currentUser && (
-    <button onClick={() => auth.signOut()}>Sign Out</button>
-  )
 }
 
 function ChatRoom(){
