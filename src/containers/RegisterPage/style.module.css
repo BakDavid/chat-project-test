@@ -1,0 +1,38 @@
+.registerContainer {
+  width: 400px;
+  position: relative;
+  margin: 50px auto;
+}
+
+.middleText {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.inputField {
+  width: 90%;
+  padding: 12px 20px;
+  margin: 3% 5%;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 1px solid;
+}
+
+.buttonField {
+  text-align: center;
+}
+
+.buttonField button {
+  background-color: #76c00d;
+  color: white;
+  width: 100px;
+  font-size: large;
+  border: #76c00d;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+.buttonField button:hover {
+  background-color: #4a7808;
+}

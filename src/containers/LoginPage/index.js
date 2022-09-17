@@ -1,66 +1,49 @@
-import React, { useState, useEffect } from 'react'
-import Layout from '../../components/Layout';
-import Card from '../../components/UI/Card';
-import { signin, isLoggedInUser } from '../../actions';
-import './style.css';
-import { useDispatch, useSelector } from 'react-redux';
-import { Navigate } from 'react-router-dom';
+import React, { useState } from "react";
+import Layout from "../../components/Layout";
+import Card from "../../components/UI/Card";
+import { signin } from "../../actions";
+import classes from "./style.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { Navigate } from "react-router-dom";
 
 /**
-* @author
-* @function LoginPage
-**/
+ * @author
+ * @function LoginPage
+ **/
 
 const LoginPage = (props) => {
-
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const dispatch = useDispatch();
-  const auth = useSelector(state => state.auth);
-
-  // useEffect(() => {
-  //   if(!auth.authenticated){
-  //     dispatch(isLoggedInUser())
-  //   }
-  // }, []);
-
-
-
+  const auth = useSelector((state) => state.auth);
 
   const userLogin = (e) => {
     e.preventDefault();
 
-    if(email == ""){
+    if (email == "") {
       alert("Email is required");
       return;
     }
-    if(password == ""){
+    if (password == "") {
       alert("Password is required");
       return;
     }
 
     dispatch(signin({ email, password }));
-    
+  };
 
-
-
-
+  if (auth.authenticated) {
+    return <Navigate to={`/`} />;
   }
 
-
-  if(auth.authenticated){
-    return <Navigate to={`/`} />
-  }
-
-
-
-  return(
+  return (
     <Layout>
-      <div className="loginContainer">
+      <div className={classes.loginContainer}>
         <Card>
           <form onSubmit={userLogin}>
-            
-            <input 
+            <h3 className={classes.middleText}>Login</h3>
+            <input
+              className={classes.inputField}
               name="email"
               type="text"
               value={email}
@@ -68,7 +51,8 @@ const LoginPage = (props) => {
               placeholder="Email"
             />
 
-            <input 
+            <input
+              className={classes.inputField}
               name="password"
               type="password"
               value={password}
@@ -76,17 +60,14 @@ const LoginPage = (props) => {
               placeholder="Password"
             />
 
-
-            <div>
+            <div className={classes.buttonField}>
               <button>Login</button>
             </div>
-
           </form>
         </Card>
       </div>
     </Layout>
-   )
+  );
+};
 
- }
-
-export default LoginPage
+export default LoginPage;

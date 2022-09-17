@@ -1,51 +1,50 @@
-import React, { useState } from 'react';
-import Layout from '../../components/Layout';
-import Card from '../../components/UI/Card';
-import { signup } from '../../actions';
-import { useDispatch, useSelector } from 'react-redux';
-import { Navigate } from 'react-router-dom';
+import React, { useState } from "react";
+import Layout from "../../components/Layout";
+import Card from "../../components/UI/Card";
+import { signup } from "../../actions";
+import { useDispatch, useSelector } from "react-redux";
+import { Navigate } from "react-router-dom";
+import classes from "./style.module.css";
 
 /**
-* @author
-* @function RegisterPage
-**/
+ * @author
+ * @function RegisterPage
+ **/
 
 const RegisterPage = (props) => {
-
-
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const dispatch = useDispatch();
-  const auth = useSelector(state => state.auth);
-
+  const auth = useSelector((state) => state.auth);
 
   const registerUser = (e) => {
-    
     e.preventDefault();
 
     const user = {
-      firstName, lastName, email, password
-    }
-    
-    dispatch(signup(user))
+      firstName,
+      lastName,
+      email,
+      password,
+    };
+
+    dispatch(signup(user));
+  };
+
+  if (auth.authenticated) {
+    return <Navigate to={`/`} />;
   }
 
-
-  if(auth.authenticated){
-    return <Navigate to={`/`} />
-  }
-
-  return(
+  return (
     <Layout>
-      <div className="registerContainer">
+      <div className={classes.registerContainer}>
         <Card>
           <form onSubmit={registerUser}>
+            <h3 className={classes.middleText}>Sign up</h3>
 
-            <h3>Sign up</h3>
-
-          <input 
+            <input
+              className={classes.inputField}
               name="firstName"
               type="text"
               value={firstName}
@@ -53,7 +52,8 @@ const RegisterPage = (props) => {
               placeholder="First Name"
             />
 
-            <input 
+            <input
+              className={classes.inputField}
               name="lastName"
               type="text"
               value={lastName}
@@ -61,7 +61,8 @@ const RegisterPage = (props) => {
               placeholder="Last Name"
             />
 
-            <input 
+            <input
+              className={classes.inputField}
               name="email"
               type="text"
               value={email}
@@ -69,7 +70,8 @@ const RegisterPage = (props) => {
               placeholder="Email"
             />
 
-            <input 
+            <input
+              className={classes.inputField}
               name="password"
               type="password"
               value={password}
@@ -77,18 +79,14 @@ const RegisterPage = (props) => {
               placeholder="Password"
             />
 
-            <div>
+            <div className={classes.buttonField}>
               <button>Sign up</button>
             </div>
-
-
-
           </form>
         </Card>
       </div>
     </Layout>
-   )
+  );
+};
 
- }
-
-export default RegisterPage
+export default RegisterPage;
