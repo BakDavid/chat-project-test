@@ -40,9 +40,9 @@ export const updateMessage = (msgObj) => {
       .then((data) => {
         console.log(data);
         //success
-        // dispatch({
-        //     type: userConstants.GET_REALTIME_MESSAGES,
-        // })
+        dispatch({
+          type: userConstants.GET_REALTIME_MESSAGES,
+        });
       })
       .catch((error) => {
         console.log(error);
@@ -55,36 +55,41 @@ export const getRealtimeConversations = (user) => {
     db.collection("conversations")
       .where("user_uid_1", "in", [user.uid_1, user.uid_2])
       .orderBy("createdAt", "asc")
-      .onSnapshot((querySnapshot) => {
-        const conversations = [];
+      .onSnapshot(
+        (querySnapshot) => {
+          const conversations = [];
 
-        querySnapshot.forEach((doc) => {
-          if (
-            (doc.data().user_uid_1 == user.uid_1 &&
-              doc.data().user_uid_2 == user.uid_2) ||
-            (doc.data().user_uid_1 == user.uid_2 &&
-              doc.data().user_uid_2 == user.uid_1)
-          ) {
-            conversations.push(doc.data());
-          }
+          querySnapshot.forEach((doc) => {
+            if (
+              (doc.data().user_uid_1 == user.uid_1 &&
+                doc.data().user_uid_2 == user.uid_2) ||
+              (doc.data().user_uid_1 == user.uid_2 &&
+                doc.data().user_uid_2 == user.uid_1)
+            ) {
+              conversations.push(doc.data());
+            }
 
-          // if(conversations.length > 0){
+            //   if(conversations.length > 0){
 
-          // }else{
-          //     dispatch({
-          //         type: `${userConstants.GET_REALTIME_MESSAGES}_FAILURE`,
-          //         payload: { conversations }
-          //     })
-          // }
-        });
+            //   }else{
+            //       dispatch({
+            //           type: `${userConstants.GET_REALTIME_MESSAGES}_FAILURE`,
+            //           payload: { conversations }
+            //       })
+            //   }
+          });
 
-        dispatch({
-          type: userConstants.GET_REALTIME_MESSAGES,
-          payload: { conversations },
-        });
+          dispatch({
+            type: userConstants.GET_REALTIME_MESSAGES,
+            payload: { conversations },
+          });
 
-        console.log(conversations);
-      });
+          console.log(conversations);
+        },
+        function (error) {
+          console.log(error);
+        }
+      );
     //user_uid_1 == 'myid' and user_uid_2 = 'yourId' OR user_uid_1 = 'yourId' and user_uid_2 = 'myId'
   };
 };
