@@ -8,6 +8,9 @@ import {
   updateMessage,
   getRealtimeConversations,
 } from "../../actions";
+import Logo from "./Logo";
+import PersonalUser from "./PersonalUser";
+import Search from "./Search";
 
 const HomePage = (props) => {
   const dispatch = useDispatch();
@@ -65,6 +68,9 @@ const HomePage = (props) => {
     <Layout>
       <section className={classes.container}>
         <div className={classes.listOfUsers}>
+          <Logo />
+          <PersonalUser key={auth.uid} user={auth} />
+          <Search />
           {user.users.length > 0
             ? user.users.map((user) => {
                 return <User onClick={initChat} key={user.uid} user={user} />;
@@ -73,7 +79,9 @@ const HomePage = (props) => {
         </div>
 
         <div className={classes.chatArea}>
-          <div className={classes.chatHeader}>{chatStarted ? chatUser : ""}</div>
+          <div className={classes.chatHeader}>
+            {chatStarted ? chatUser : ""}
+          </div>
           <div className={classes.messageSections}>
             {chatStarted
               ? user.conversations.map((con) => (
