@@ -81,7 +81,6 @@ export const signin = (user) => {
             const loggedInUser = {
               firstName,
               lastName,
-              occupation: data.user.occupation,
               uid: data.user.uid,
               email: data.user.email,
             };

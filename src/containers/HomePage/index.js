@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import classes from "./style.module.css";
+import IconSend from "../../assets/images/IconSend.png"
 import Layout from "../../components/Layout";
 import User from "./User";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,7 +13,7 @@ import Logo from "./Logo";
 import PersonalUser from "./PersonalUser";
 import Search from "./Search";
 
-const HomePage = (props) => {
+const HomePage = () => {
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
   const user = useSelector((state) => state.user);
@@ -97,12 +98,14 @@ const HomePage = (props) => {
           </div>
           {chatStarted ? (
             <div className={classes.chatControls}>
-              <textarea
+              <input
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
-                placeholder="Write Message"
+                placeholder="Enter your message here"
               />
-              <button onClick={submitMessage}>Send</button>
+              <button onClick={submitMessage}>
+                <img src={IconSend} />
+              </button>
             </div>
           ) : null}
         </div>

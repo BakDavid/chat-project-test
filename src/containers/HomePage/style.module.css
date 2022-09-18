@@ -16,43 +16,55 @@
 }
 .chatArea {
   width: 80%;
-  height: 100%;
+  height: 96%;
   overflow-x: hidden;
   position: relative;
+  margin: 20px;
+  border: 2px solid #DBE5ED;
+  border-radius: 20px;
 }
 .chatHeader {
-  height: 40px;
-  background: #e2e0e0;
-  text-align: center;
+  padding: 10px 0px 10px 15px;
+  background: #F4F5F8;
   line-height: 40px;
-  color: #000;
+  color: #4b5155;
   font-weight: bold;
   font-family: sans-serif;
+  border-bottom: 2px solid #DCE5ED;
 }
 .chatControls {
   display: flex;
   height: 50px;
   bottom: 0;
+  margin-left: 2%;
 }
-.chatControls textarea {
+.chatControls input {
   width: 90%;
+  border-radius: 25px;
+  padding: 20px;
 }
 .chatControls button {
-  width: 10%;
+  width: 5%;
+  border-radius: 25%;
+  background-color: #76c00d;
+  border: none;
 }
 
 .messageStyle {
-  background: skyblue;
+  background: #ffffff;
   display: inline-block;
   padding: 5px 10px;
   border-radius: 10px;
-  margin: 5px;
+  border: 1px solid lightgray;
+  margin: 15px 15px 0px 15px;
   display: inline-block;
+  padding: 10px 20px;
 }
 
 .messageSections {
-  height: calc(100% - 90px);
+  height: calc(100% - 130px);
   width: 100%;
   overflow-x: hidden;
   position: relative;
+  background-color: #f9fafc;
 }

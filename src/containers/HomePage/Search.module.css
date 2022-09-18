@@ -1,0 +1,41 @@
+.searchContainer {
+  display: inline-block;
+  padding: 0px 10px;
+  margin: 2% 3%;
+  height: 75px;
+  width: 90%;
+}
+
+.activeChats button {
+  float: right;
+  margin: 0px;
+  border: none;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 10px;
+  padding: 5px 10px;
+  position: relative;
+  bottom: 4px;
+}
+
+.searchContainer input {
+  width: 92%;
+  padding: 10px;
+  margin-top: 4px;
+  background-color: #F9FAFC;
+  border-radius: 10px;
+  border-color: #DBE5ED;
+}
+
+::placeholder {
+  color: #B1BDC7;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+ color: #B1BDC7;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+ color: #B1BDC7;
+}

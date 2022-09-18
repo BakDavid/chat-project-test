@@ -14,7 +14,7 @@ const PersonalUser = (props) => {
         <div className={classes.fullName}>
           {user.firstName} {user.lastName}
         </div>
-        <div className={classes.occupation}>{user.occupation}</div>
+        <div className={classes.occupation}>{user.occupation == undefined ? "Web Developer" : user.occupation}</div>
         <div className={classes.status}>Online</div>
       </div>
     </div>
