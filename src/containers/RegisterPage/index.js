@@ -14,6 +14,7 @@ import classes from "./style.module.css";
 const RegisterPage = (props) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [occupation, setOccupation] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
@@ -25,9 +26,35 @@ const RegisterPage = (props) => {
     const user = {
       firstName,
       lastName,
+      occupation,
       email,
       password,
     };
+
+    if (firstName === "") {
+      alert("First name is required");
+      return;
+    }
+    if (lastName === "") {
+      alert("Last name is required");
+      return;
+    }
+    if (occupation === "") {
+      alert("Occupation is required");
+      return;
+    }
+    if (email === "") {
+      alert("Email is required");
+      return;
+    }
+    if (!/^\w+([-]?\w+)*@\w+([-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+      alert("Not a correct email");
+      return;
+    }
+    if (password === "") {
+      alert("Password is required");
+      return;
+    }
 
     dispatch(signup(user));
   };
@@ -59,6 +86,15 @@ const RegisterPage = (props) => {
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
               placeholder="Last Name"
+            />
+
+            <input
+              className={classes.inputField}
+              name="occupation"
+              type="text"
+              value={occupation}
+              onChange={(e) => setOccupation(e.target.value)}
+              placeholder="Occupation"
             />
 
             <input

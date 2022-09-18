@@ -24,6 +24,7 @@ export const signup = (user) => {
               .set({
                 firstName: user.firstName,
                 lastName: user.lastName,
+                occupation: user.occupation,
                 uid: data.user.uid,
                 createdAt: new Date(),
                 isOnline: true,
@@ -33,6 +34,7 @@ export const signup = (user) => {
                 const loggedInUser = {
                   firstName: user.firstName,
                   lastName: user.lastName,
+                  occupation: user.occupation,
                   uid: data.user.uid,
                   email: user.email,
                 };
@@ -79,6 +81,7 @@ export const signin = (user) => {
             const loggedInUser = {
               firstName,
               lastName,
+              occupation: data.user.occupation,
               uid: data.user.uid,
               email: data.user.email,
             };
