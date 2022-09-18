@@ -1,62 +1,94 @@
-.displayName {
-  display: flex;
-  align-items: center;
-  padding: 5px 10px;
-  box-sizing: border-box;
-  cursor: pointer;
+.container {
+  padding: 10px 10px;
   margin: 2% 3%;
+  height: 55px;
 }
 
-.displayName:hover {
+.container:hover {
   border: 1px solid #dce5ed;
   border-radius: 10px;
   background-color: #f9fafc;
 }
 
-.displayName.active {
-  background: #ccc;
+.container::after {
+  content: "";
+  clear: both;
+  display: table;
 }
 
-.displayPic {
+.container img {
+  float: left;
+  margin-right: 20px;
+  border-radius: 50%;
   width: 50px;
   height: 50px;
-  overflow: hidden;
-  border-radius: 25px;
-  border: 1px solid white;
 }
 
-.displayPic img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.personalOnlineStatus {
+  position: relative;
+  top: 34px;
+  right: 34px;
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background: #76c00d;
+  border-radius: 50%;
+  border: 2px solid white;
 }
 
-.displayUser {
-  display: flex;
-  flex: 1;
-  justify-content: space-between;
-  margin: 0 10px;
+.personalOfflineStatus {
+  position: relative;
+  top: 34px;
+  right: 34px;
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background: #afbbc6;
+  border-radius: 50%;
+  border: 2px solid white;
 }
 
-.displayFullName {
+.informationSection {
+  position: relative;
+  top: -20px;
+}
+
+.fullName {
+  font-size: 18px;
   font-weight: 500;
 }
 
-.onlineStatus {
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  background: #16e316;
-  border-radius: 5px;
-  box-shadow: 0 0 10px 0 #16e316;
+.occupation {
+  font-size: 12px;
+  font-weight: 500;
+  color: #7b8793;
 }
-.onlineStatusOff {
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  border-radius: 5px;
-  background: grey;
-  box-shadow: 0 0 0 0;
+
+.onlineStatus {
+  position: relative;
+  left: 70px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #76c00d;
+}
+
+.offlineStatus {
+  position: relative;
+  left: 70px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #afbbc6;
+}
+
+@media (max-width: 500px) {
+  .container {
+    text-align: center;
+  }
+  .container img {
+    margin: auto;
+    float: none;
+    display: block;
+  }
 }
 
 ::-webkit-scrollbar {
@@ -66,5 +98,5 @@
 
 ::-webkit-scrollbar-thumb {
   border-radius: 4px;
-  background-color: #DBE5ED;
+  background-color: #dbe5ed;
 }
